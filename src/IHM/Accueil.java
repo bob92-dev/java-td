@@ -9,6 +9,8 @@ import java.awt.event.*;
 import java.io.File;
 
 public class Accueil extends JFrame {
+
+    private  File myFile;
     private JPanel container;
     private JButton button1;
     private JButton myBtnValider;
@@ -79,6 +81,8 @@ public class Accueil extends JFrame {
         JMenuItem menuAbout = new JMenuItem("contact us");
         myMenu3.add(menuAbout);
 
+
+
         menuOpen.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -91,10 +95,12 @@ public class Accueil extends JFrame {
                 FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
                 chooser.setFileFilter(filter);
                 int returnVal = chooser.showOpenDialog(null);
-                File myFile = chooser.getSelectedFile();
+                myFile = chooser.getSelectedFile();
                 System.out.println(myFile.getAbsolutePath());
-
+                processXml(myFile);
             }
+
+
 
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -172,15 +178,26 @@ public class Accueil extends JFrame {
 
         });
 
+
+
+
+
+    }
+
+
+    private void processXml (File myFile){
+
+
     }
 
 
     public static void main(String[]args){
+        new JtableBasique().setVisible(true);
         Accueil accueil = new Accueil();
         accueil.pack();
         accueil.setVisible(true);
 
-        new JtableBasique().setVisible(true);
+
 
 
 

@@ -13,9 +13,8 @@ public class JtableBasique extends JFrame {
         JTable tableau = new JTable(new donnees());
 
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
+        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
         pack();
-
     }
-
 }
