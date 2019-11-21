@@ -57,34 +57,34 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
         JLabel jlabelTitre = new JLabel("Titre :");
         myGBC.gridx = 5;
-        myGBC.gridy = 0;
+        myGBC.gridy = 1;
         myGBC.gridheight = 1;
         myGBC.gridwidth = 1;
         myPanel.add(jlabelTitre,myGBC);
 
         JLabel jlabelAuteur = new JLabel("Auteur :");
-        myGBC.gridy = 1;
+        myGBC.gridy = 2;
 
 
         myPanel.add(jlabelAuteur,myGBC);
 
         JLabel jlabelPresentation = new JLabel("Présentation :");
-        myGBC.gridy = 2;
+        myGBC.gridy = 3;
         myPanel.add(jlabelPresentation,myGBC);
 
         JLabel jlabelParution = new JLabel("Parution :");
-        myGBC.gridy = 3;
+        myGBC.gridy = 4;
 
         myPanel.add(jlabelParution,myGBC);
 
         JLabel jlabelColonne = new JLabel("Colonne :");
 
-        myGBC.gridy = 4;
+        myGBC.gridy = 5;
         myPanel.add(jlabelColonne,myGBC);
 
         JLabel jlabelRangee = new JLabel("Rangée:");
        
-        myGBC.gridy = 5;
+        myGBC.gridy = 6;
 
         //myGBC.fill = GridBagConstraints.VERTICAL;
         myPanel.add(jlabelRangee,myGBC);
