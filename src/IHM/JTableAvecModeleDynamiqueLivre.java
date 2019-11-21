@@ -1,6 +1,10 @@
 package IHM;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +14,13 @@ import java.awt.event.MouseListener;
 public class JTableAvecModeleDynamiqueLivre extends JFrame {
     private ModeleDynamiqueLivre modele = new ModeleDynamiqueLivre();
     private JTable tableau;
+    private JTextField textfieldTitre;
+    private JTextField textfieldAuteur;
+    private JTextField textfieldPresentation;
+    private JTextField textfieldParution;
+    private JTextField textfieldColonne;
+    private JTextField textfieldRangee;
+
 
     public JTableAvecModeleDynamiqueLivre() {
         super();
@@ -17,7 +28,7 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         setTitle("Bibliothèque");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTable tableau = new JTable(modele);
+        tableau = new JTable(modele);
 
 
 
@@ -57,50 +68,90 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
         JLabel jlabelTitre = new JLabel("Titre :");
         myGBC.gridx = 5;
-        myGBC.gridy = 0;
+        myGBC.gridy = 1;
         myGBC.gridheight = 1;
         myGBC.gridwidth = 1;
         myPanel.add(jlabelTitre,myGBC);
 
         JLabel jlabelAuteur = new JLabel("Auteur :");
-        myGBC.gridy = 1;
+        myGBC.gridy = 2;
 
 
         myPanel.add(jlabelAuteur,myGBC);
 
         JLabel jlabelPresentation = new JLabel("Présentation :");
-        myGBC.gridy = 2;
+        myGBC.gridy = 3;
         myPanel.add(jlabelPresentation,myGBC);
 
         JLabel jlabelParution = new JLabel("Parution :");
-        myGBC.gridy = 3;
+        myGBC.gridy = 4;
 
         myPanel.add(jlabelParution,myGBC);
 
         JLabel jlabelColonne = new JLabel("Colonne :");
 
-        myGBC.gridy = 4;
+        myGBC.gridy = 5;
         myPanel.add(jlabelColonne,myGBC);
 
         JLabel jlabelRangee = new JLabel("Rangée:");
        
-        myGBC.gridy = 5;
+        myGBC.gridy = 6;
 
         //myGBC.fill = GridBagConstraints.VERTICAL;
         myPanel.add(jlabelRangee,myGBC);
 
 
 
-        JTextField textFieldTitre = new JTextField();
-        myGBC.gridx = 3;
+        textfieldTitre = new JTextField();
+        myGBC.gridx = 6;
         myGBC.gridy = 1;
         myGBC.gridheight = 1;
         myGBC.gridwidth = 1;
         Dimension dim = new Dimension();
-        textFieldTitre.setPreferredSize(dim);
+        dim.setSize(100,30);
+        textfieldTitre.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldTitre,myGBC);
 
+         JTextField textfieldAuteur= new JTextField();
+        myGBC.gridy = 2;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        textfieldAuteur.setPreferredSize(dim);
+        myPanel.add(textfieldAuteur,myGBC);
+
+        textfieldPresentation= new JTextField();
+        myGBC.gridy = 3;
+        dim = new Dimension();
+        dim.setSize(100,30);
+       textfieldPresentation.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textfieldPresentation,myGBC);
+
+        textfieldParution = new JTextField();
+        myGBC.gridy = 4;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textfieldParution.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textfieldParution,myGBC);
+
+        textfieldColonne= new JTextField();
+        myGBC.gridy = 5;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textfieldColonne.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textfieldColonne,myGBC);
+
+        textfieldRangee= new JTextField();
+        myGBC.gridy = 6;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textfieldRangee.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textfieldRangee,myGBC);
 
 
 
@@ -138,54 +189,82 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
 
 
+        tableau.addMouseListener(new MouseListener() {
+                     @Override
+                     public void mouseClicked(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mousePressed(MouseEvent e) {
+                         Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
+                         Object auteur = tableau.getValueAt(tableau.getSelectedRow(),1);
+                         Object presentation = tableau.getValueAt(tableau.getSelectedRow(),2);
+                         Object parution = tableau.getValueAt(tableau.getSelectedRow(),3);
+                         Object colonne = tableau.getValueAt(tableau.getSelectedRow(),4);
+                         Object rangee = tableau.getValueAt(tableau.getSelectedRow(),5);
 
 
-        JTextField textFieldAuteur = new JTextField();
-        JTextField textFieldPresentation = new JTextField();
-        JTextField textFieldParution = new JTextField();
-        JTextField textFieldColonne = new JTextField();
-        JTextField textFieldRangee = new JTextField();
+                         textfieldTitre.setText((String)titre );
+                         textfieldAuteur.setText((String) auteur);
+                         textfieldPresentation.setText((String) presentation);
+                         textfieldParution.setText(parution.toString());
+                         textfieldColonne.setText(colonne.toString());
+                         textfieldRangee.setText(rangee.toString());
+
+                         System.out.format("%s %s %s %s %s %s\n", titre, auteur, presentation, parution, colonne, rangee);
+                     }
+
+                     @Override
+                     public void mouseReleased(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mouseEntered(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mouseExited(MouseEvent e) {
+
+                     }
+                 });
 
 
+                menuOpen.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
 
+                    }
 
-
-
-        menuOpen.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
-                chooser.setFileFilter(filter);
-                int returnVal = chooser.showOpenDialog(null);
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        JFileChooser chooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
+                        chooser.setFileFilter(filter);
+                        int returnVal = chooser.showOpenDialog(null);
                 /*myFile = chooser.getSelectedFile();
                 System.out.println(myFile.getAbsolutePath());
                 processXml(myFile);*/
-            }
+                    }
 
 
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
 
+                    }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
 
-            }
+                    }
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
+                    @Override
+                    public void mouseExited(MouseEvent e) {
 
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+                    }
+                });
 
         menuModif.addMouseListener(new MouseListener() {
             @Override
@@ -284,12 +363,7 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
     public static void main(String[] args) {
         JTableAvecModeleDynamiqueLivre tabl = new JTableAvecModeleDynamiqueLivre();
 
-
-
         tabl.setVisible(true);
-
-
-
     }
 
     private class AddAction extends AbstractAction {
@@ -318,10 +392,11 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
                     optionPane1.showMessageDialog(  tableau,"Aucune ligne sélectionnée", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-            for(int i = selection.length - 1; i >= 0; i--) {
-                modele.removeLivre(selection[i]);
+                    for(int i = selection.length - 1; i >= 0; i--) {
+                    modele.removeLivre(selection[i]);
             }
             }
         }
     }
 }
+
