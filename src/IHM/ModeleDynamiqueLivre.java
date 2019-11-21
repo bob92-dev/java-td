@@ -44,11 +44,11 @@ public class ModeleDynamiqueLivre extends AbstractTableModel {
                 return livres.get(rowIndex).getAuteur();
             case 2:
                 return livres.get(rowIndex).getPresentation();
-            case 3:
+            case 5:
                 return livres.get(rowIndex).getColonne();
             case 4:
                 return livres.get(rowIndex).getRangee();
-            case 5:
+            case 3:
                 return livres.get(rowIndex).getParution();
             default:
                 return null; //Ne devrait jamais arriver

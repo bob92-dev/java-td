@@ -14,6 +14,13 @@ import java.awt.event.MouseListener;
 public class JTableAvecModeleDynamiqueLivre extends JFrame {
     private ModeleDynamiqueLivre modele = new ModeleDynamiqueLivre();
     private JTable tableau;
+    private JTextField textfieldTitre;
+    private JTextField textfieldAuteur;
+    private JTextField textfieldPresentation;
+    private JTextField textfieldParution;
+    private JTextField textfieldColonne;
+    private JTextField textfieldRangee;
+
 
     public JTableAvecModeleDynamiqueLivre() {
         super();
@@ -95,56 +102,56 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
 
 
-        JTextField textFieldTitre = new JTextField();
+        textfieldTitre = new JTextField();
         myGBC.gridx = 6;
         myGBC.gridy = 1;
         myGBC.gridheight = 1;
         myGBC.gridwidth = 1;
         Dimension dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
+        textfieldTitre.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldTitre,myGBC);
 
-         textFieldTitre= new JTextField();
+         JTextField textfieldAuteur= new JTextField();
         myGBC.gridy = 2;
         dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        textfieldAuteur.setPreferredSize(dim);
+        myPanel.add(textfieldAuteur,myGBC);
 
-        textFieldTitre= new JTextField();
+        textfieldPresentation= new JTextField();
         myGBC.gridy = 3;
         dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
+       textfieldPresentation.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldPresentation,myGBC);
 
-        textFieldTitre= new JTextField();
+        textfieldParution = new JTextField();
         myGBC.gridy = 4;
         dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
+        textfieldParution.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldParution,myGBC);
 
-        textFieldTitre= new JTextField();
+        textfieldColonne= new JTextField();
         myGBC.gridy = 5;
         dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
+        textfieldColonne.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldColonne,myGBC);
 
-        textFieldTitre= new JTextField();
+        textfieldRangee= new JTextField();
         myGBC.gridy = 6;
         dim = new Dimension();
         dim.setSize(100,30);
-        textFieldTitre.setPreferredSize(dim);
+        textfieldRangee.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
-        myPanel.add(textFieldTitre,myGBC);
+        myPanel.add(textfieldRangee,myGBC);
 
 
 
@@ -196,6 +203,14 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
                          Object parution = tableau.getValueAt(tableau.getSelectedRow(),3);
                          Object colonne = tableau.getValueAt(tableau.getSelectedRow(),4);
                          Object rangee = tableau.getValueAt(tableau.getSelectedRow(),5);
+
+
+                         textfieldTitre.setText((String)titre );
+                         textfieldAuteur.setText((String) auteur);
+                         textfieldPresentation.setText((String) presentation);
+                         textfieldParution.setText(parution.toString());
+                         textfieldColonne.setText(colonne.toString());
+                         textfieldRangee.setText(rangee.toString());
 
                          System.out.format("%s %s %s %s %s %s\n", titre, auteur, presentation, parution, colonne, rangee);
                      }
