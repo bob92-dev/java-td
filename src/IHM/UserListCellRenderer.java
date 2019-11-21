@@ -17,7 +17,7 @@ public class UserListCellRenderer extends DefaultTableCellRenderer {
             component.setForeground(table.getSelectionForeground());
             component.setBackground(table.getSelectionBackground());
         }
-        else if (table.getValueAt(row, 1).equals("ONLINE")) {
+        else if (table.getValueAt(row, 1).equals("online")) {
             component.setForeground(Color.BLACK);
             component.setBackground(Color.GREEN);
         }

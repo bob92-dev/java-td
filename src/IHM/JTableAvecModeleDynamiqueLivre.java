@@ -14,8 +14,8 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
     public JTableAvecModeleDynamiqueLivre() {
         super();
 
-        setTitle("JTable avec modèle dynamique");
-      //  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Bibliothèque");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         tableau = new JTable(modele);
 
@@ -56,8 +56,10 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
         JMenu myMenu3 = new JMenu("à propos");
         myMenuBar.add(myMenu3);
-        JMenuItem menuAbout = new JMenuItem("contact us");
+        JMenuItem menuAbout = new JMenuItem("Informations");
         myMenu3.add(menuAbout);
+
+
 
         menuOpen.addMouseListener(new MouseListener() {
             @Override
@@ -131,6 +133,8 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
+                JOptionPane optionPane = new JOptionPane();
+                int retour = optionPane.showConfirmDialog(tableau, "Aucune sauvegarde n'a été trouvée. Voulez vous sauvegarder avant de quitter?", "Attention",JOptionPane.OK_CANCEL_OPTION);
                 dispose();
                 System.exit(DISPOSE_ON_CLOSE);
 
@@ -155,7 +159,34 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
         });
 
+        menuAbout.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                JOptionPane d = new JOptionPane();
+                d.showMessageDialog( tableau, "Version 1.2"+"\n"+"Produite par Boris l'intellectuel, Romain le comique , Hugo le Pilier de comptoir",
+                        "Informations", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
 
 
@@ -183,13 +214,22 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
     private class RemoveAction extends AbstractAction {
         private RemoveAction() {
             super("Supprimer");
+
         }
 
         public void actionPerformed(ActionEvent e) {
+
+
             int[] selection = tableau.getSelectedRows();
 
-            for(int i = selection.length - 1; i >= 0; i--){
+                if (selection.length == 0){
+                    JOptionPane optionPane1 = new JOptionPane();
+                    optionPane1.showMessageDialog(  tableau,"Aucune ligne sélectionnée", "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+            for(int i = selection.length - 1; i >= 0; i--) {
                 modele.removeLivre(selection[i]);
+            }
             }
         }
     }
