@@ -1,6 +1,10 @@
 package IHM;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,15 +96,55 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
 
         JTextField textFieldTitre = new JTextField();
-        myGBC.gridx = 3;
+        myGBC.gridx = 6;
         myGBC.gridy = 1;
         myGBC.gridheight = 1;
         myGBC.gridwidth = 1;
         Dimension dim = new Dimension();
+        dim.setSize(100,30);
         textFieldTitre.setPreferredSize(dim);
         myGBC.fill = GridBagConstraints.REMAINDER;
         myPanel.add(textFieldTitre,myGBC);
 
+         textFieldTitre= new JTextField();
+        myGBC.gridy = 2;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
+
+        textFieldTitre= new JTextField();
+        myGBC.gridy = 3;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
+
+        textFieldTitre= new JTextField();
+        myGBC.gridy = 4;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
+
+        textFieldTitre= new JTextField();
+        myGBC.gridy = 5;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
+
+        textFieldTitre= new JTextField();
+        myGBC.gridy = 6;
+        dim = new Dimension();
+        dim.setSize(100,30);
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
 
 
 
@@ -138,13 +182,18 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
 
 
+        tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
+                
+                System.out.println(titre);
+                //Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
+                //Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
 
 
-        JTextField textFieldAuteur = new JTextField();
-        JTextField textFieldPresentation = new JTextField();
-        JTextField textFieldParution = new JTextField();
-        JTextField textFieldColonne = new JTextField();
-        JTextField textFieldRangee = new JTextField();
+            }
+        });
 
 
 
@@ -283,8 +332,6 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
     public static void main(String[] args) {
         JTableAvecModeleDynamiqueLivre tabl = new JTableAvecModeleDynamiqueLivre();
-
-
 
         tabl.setVisible(true);
 
