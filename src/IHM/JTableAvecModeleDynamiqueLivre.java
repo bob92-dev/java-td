@@ -182,59 +182,74 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
 
 
 
-        tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
-                
-                System.out.println(titre);
-                //Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
-                //Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
+        tableau.addMouseListener(new MouseListener() {
+                     @Override
+                     public void mouseClicked(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mousePressed(MouseEvent e) {
+                         Object titre = tableau.getValueAt(tableau.getSelectedRow(),0);
+                         Object auteur = tableau.getValueAt(tableau.getSelectedRow(),1);
+                         Object presentation = tableau.getValueAt(tableau.getSelectedRow(),2);
+                         Object parution = tableau.getValueAt(tableau.getSelectedRow(),3);
+                         Object colonne = tableau.getValueAt(tableau.getSelectedRow(),4);
+                         Object rangee = tableau.getValueAt(tableau.getSelectedRow(),5);
+
+                         System.out.format("%s %s %s %s %s %s\n", titre, auteur, presentation, parution, colonne, rangee);
+                     }
+
+                     @Override
+                     public void mouseReleased(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mouseEntered(MouseEvent e) {
+
+                     }
+
+                     @Override
+                     public void mouseExited(MouseEvent e) {
+
+                     }
+                 });
 
 
-            }
-        });
+                menuOpen.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
 
+                    }
 
-
-
-
-
-        menuOpen.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
-                chooser.setFileFilter(filter);
-                int returnVal = chooser.showOpenDialog(null);
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        JFileChooser chooser = new JFileChooser();
+                        FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
+                        chooser.setFileFilter(filter);
+                        int returnVal = chooser.showOpenDialog(null);
                 /*myFile = chooser.getSelectedFile();
                 System.out.println(myFile.getAbsolutePath());
                 processXml(myFile);*/
-            }
+                    }
 
 
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
 
+                    }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
 
-            }
+                    }
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
+                    @Override
+                    public void mouseExited(MouseEvent e) {
 
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+                    }
+                });
 
         menuModif.addMouseListener(new MouseListener() {
             @Override
@@ -334,9 +349,6 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         JTableAvecModeleDynamiqueLivre tabl = new JTableAvecModeleDynamiqueLivre();
 
         tabl.setVisible(true);
-
-
-
     }
 
     private class AddAction extends AbstractAction {
@@ -372,3 +384,4 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         }
     }
 }
+
