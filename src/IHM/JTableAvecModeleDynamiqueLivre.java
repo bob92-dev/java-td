@@ -17,7 +17,7 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         setTitle("Bibliothèque");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTable tableau = new JTable(modele);
+        tableau = new JTable(modele);
 
 
 
@@ -318,8 +318,8 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
                     optionPane1.showMessageDialog(  tableau,"Aucune ligne sélectionnée", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-            for(int i = selection.length - 1; i >= 0; i--) {
-                modele.removeLivre(selection[i]);
+                    for(int i = selection.length - 1; i >= 0; i--) {
+                    modele.removeLivre(selection[i]);
             }
             }
         }
