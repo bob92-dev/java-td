@@ -17,16 +17,92 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         setTitle("Bibliothèque");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        tableau = new JTable(modele);
+        JTable tableau = new JTable(modele);
 
-        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
-        JPanel boutons = new JPanel();
 
-        boutons.add(new JButton(new AddAction()));
-        boutons.add(new JButton(new RemoveAction()));
+        //getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
-        getContentPane().add(boutons, BorderLayout.SOUTH);
+        JPanel myPanel = new JPanel();
+        JScrollPane myScrollPane = new JScrollPane(tableau);
+        GridBagLayout GBL = new GridBagLayout();
+        myPanel.setLayout(GBL);
+        GridBagConstraints myGBC = new GridBagConstraints();
+
+        myGBC.gridx = 0;
+        myGBC.gridy = 0;
+        myGBC.gridheight = 10;
+        myGBC.gridwidth = 5;
+        myPanel.add(myScrollPane,myGBC);
+
+
+        /*myGBC.gridx = 0;
+        myGBC.gridy = 1;
+        myGBC.gridheight = 6;
+        myGBC.gridwidth = 2;
+        myPanel.add(tableau,myGBC);
+         */
+
+
+
+        myPanel.add(new JButton(new AddAction()));
+        myPanel.add(new JButton(new RemoveAction()));
+
+
+        getContentPane().add(myPanel);
+
+// consruction du forumulaire
+
+
+
+        JLabel jlabelTitre = new JLabel("Titre :");
+        myGBC.gridx = 5;
+        myGBC.gridy = 0;
+        myGBC.gridheight = 1;
+        myGBC.gridwidth = 1;
+        myPanel.add(jlabelTitre,myGBC);
+
+        JLabel jlabelAuteur = new JLabel("Auteur :");
+        myGBC.gridy = 1;
+
+
+        myPanel.add(jlabelAuteur,myGBC);
+
+        JLabel jlabelPresentation = new JLabel("Présentation :");
+        myGBC.gridy = 2;
+        myPanel.add(jlabelPresentation,myGBC);
+
+        JLabel jlabelParution = new JLabel("Parution :");
+        myGBC.gridy = 3;
+
+        myPanel.add(jlabelParution,myGBC);
+
+        JLabel jlabelColonne = new JLabel("Colonne :");
+
+        myGBC.gridy = 4;
+        myPanel.add(jlabelColonne,myGBC);
+
+        JLabel jlabelRangee = new JLabel("Rangée:");
+       
+        myGBC.gridy = 5;
+
+        //myGBC.fill = GridBagConstraints.VERTICAL;
+        myPanel.add(jlabelRangee,myGBC);
+
+
+
+        JTextField textFieldTitre = new JTextField();
+        myGBC.gridx = 3;
+        myGBC.gridy = 1;
+        myGBC.gridheight = 1;
+        myGBC.gridwidth = 1;
+        Dimension dim = new Dimension();
+        textFieldTitre.setPreferredSize(dim);
+        myGBC.fill = GridBagConstraints.REMAINDER;
+        myPanel.add(textFieldTitre,myGBC);
+
+
+
 
         pack();
 
@@ -38,8 +114,8 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         myMenu.add(menuOpen);
         JMenuItem menuSave = new JMenuItem("Sauvegarder");
         myMenu.add(menuSave);
-        JMenuItem menuSaveunder = new JMenuItem("Sauvegarder sous");
-        myMenu.add(menuSaveunder);
+        JMenuItem menuSaveUnder = new JMenuItem("Sauvegarder sous");
+        myMenu.add(menuSaveUnder);
         JMenuItem menuExit = new JMenuItem("Quitter");
         myMenu.add(menuExit);
 
@@ -59,16 +135,16 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         JMenuItem menuAbout = new JMenuItem("Informations");
         myMenu3.add(menuAbout);
 
-        JTextField textField1 = new JTextField();
 
-        JTextField textField2 = new JTextField();
 
-        JTextField textField3 = new JTextField();
 
-        JTextField textField4 = new JTextField();
 
-        JTextField textField5 = new JTextField();
-        JTextField textField6 = new JTextField();
+
+        JTextField textFieldAuteur = new JTextField();
+        JTextField textFieldPresentation = new JTextField();
+        JTextField textFieldParution = new JTextField();
+        JTextField textFieldColonne = new JTextField();
+        JTextField textFieldRangee = new JTextField();
 
 
 
