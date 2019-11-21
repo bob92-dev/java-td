@@ -1,32 +1,31 @@
 package IHM;
 
-import Bridge.Bibliotheque;
-
 public class Livre {
-    private String nom;
+    private String titre;
     private String auteur;
-    private String resume;
+    private String presentation;
+    private int parution;
     private int colonne;
     private int rangee;
-    private int parution;
 
 
-    public Livre(String nom, String auteur, String resume, int colonne, int rangee, int parution) {
-        this.nom = nom;
+
+    public Livre(String titre, String auteur, String presentation, int parution, int colonne, int rangee) {
+        this.titre = titre;
         this.auteur = auteur;
-        this.resume = resume;
+        this.presentation = presentation;
         this.colonne = colonne;
         this.rangee = rangee;
         this.parution = parution;
     }
 
 
-    public String getNom() {
-        return nom;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public String getAuteur() {
@@ -37,12 +36,12 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    public String getResume() {
-        return resume;
+    public String getPresentation() {
+        return presentation;
     }
 
-    public void setResume(String resume) {
-        this.resume = resume;
+    public void setPresentation(String presentation) {
+        this.presentation = presentation;
     }
 
     public int getColonne() {

@@ -59,6 +59,20 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
         JMenuItem menuAbout = new JMenuItem("Informations");
         myMenu3.add(menuAbout);
 
+        JTextField textField1 = new JTextField();
+
+        JTextField textField2 = new JTextField();
+
+        JTextField textField3 = new JTextField();
+
+        JTextField textField4 = new JTextField();
+
+        JTextField textField5 = new JTextField();
+        JTextField textField6 = new JTextField();
+
+
+
+
 
 
         menuOpen.addMouseListener(new MouseListener() {
@@ -188,12 +202,13 @@ public class JTableAvecModeleDynamiqueLivre extends JFrame {
             }
         });
 
-
-
+        tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
     }
 
     public static void main(String[] args) {
         JTableAvecModeleDynamiqueLivre tabl = new JTableAvecModeleDynamiqueLivre();
+
+
 
         tabl.setVisible(true);
 
