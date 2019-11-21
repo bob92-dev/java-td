@@ -2,37 +2,33 @@ package IHM;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Accueil extends JFrame {
+public class JTableAvecModeleDynamiqueLivre extends JFrame {
+    private ModeleDynamiqueLivre modele = new ModeleDynamiqueLivre();
+    private JTable tableau;
 
-    private  File myFile;
-    private JPanel container;
-    private JButton button1;
-    private JButton myBtnValider;
-    private JButton FICHIERButton;
+    public JTableAvecModeleDynamiqueLivre() {
+        super();
 
-    public Accueil (){
+        setTitle("JTable avec modèle dynamique");
+      //  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        tableau = new JTable(modele);
 
-        this.setTitle("bibliothèque");
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
+        JPanel boutons = new JPanel();
 
-        /*JPanel myPanel = new JPanel();
-        this.setContentPane(myPanel);
-*/
+        boutons.add(new JButton(new AddAction()));
+        boutons.add(new JButton(new RemoveAction()));
 
-        GridBagLayout myLayout = new GridBagLayout();
-        getContentPane().setLayout(myLayout);
+        getContentPane().add(boutons, BorderLayout.SOUTH);
 
-
-        new JTableAvecModeleDynamiqueLivre().setVisible(true);
-
+        pack();
 
         JMenuBar myMenuBar = new JMenuBar();
         this.setJMenuBar(myMenuBar);
@@ -47,9 +43,6 @@ public class Accueil extends JFrame {
         JMenuItem menuExit = new JMenuItem("Quitter");
         myMenu.add(menuExit);
 
-
-
-
         JMenu myMenu2 = new JMenu("Edit");
         myMenuBar.add(myMenu2);
         JMenuItem menuModif = new JMenuItem("Modifier livre");
@@ -61,13 +54,10 @@ public class Accueil extends JFrame {
         JMenuItem menuDelete = new JMenuItem("Supprimer livre");
         myMenu2.add(menuDelete);
 
-
         JMenu myMenu3 = new JMenu("à propos");
         myMenuBar.add(myMenu3);
         JMenuItem menuAbout = new JMenuItem("contact us");
         myMenu3.add(menuAbout);
-
-
 
         menuOpen.addMouseListener(new MouseListener() {
             @Override
@@ -80,11 +70,10 @@ public class Accueil extends JFrame {
                 JFileChooser chooser = new JFileChooser();
                 FileNameExtensionFilter filter = new FileNameExtensionFilter("fichier xml", "xml");
                 chooser.setFileFilter(filter);
-
                 int returnVal = chooser.showOpenDialog(null);
-                myFile = chooser.getSelectedFile();
+                /*myFile = chooser.getSelectedFile();
                 System.out.println(myFile.getAbsolutePath());
-                processXml(myFile);
+                processXml(myFile);*/
             }
 
 
@@ -172,18 +161,36 @@ public class Accueil extends JFrame {
 
     }
 
+    public static void main(String[] args) {
+        JTableAvecModeleDynamiqueLivre tabl = new JTableAvecModeleDynamiqueLivre();
 
-    private void processXml (File myFile){
+        tabl.setVisible(true);
+
 
 
     }
-/*
-    public static void main(String[]args){
 
-        Accueil accueil = new Accueil();
-        accueil.pack();
-        accueil.setVisible(true);
+    private class AddAction extends AbstractAction {
+        private AddAction() {
+            super("Ajouter");
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            modele.addLivre(new Livre("50 nuances de fion", "Troudeballe", "du cul,du cul,du cul", 2, 3, 2005));
+        }
     }
-*/
 
+    private class RemoveAction extends AbstractAction {
+        private RemoveAction() {
+            super("Supprimer");
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            int[] selection = tableau.getSelectedRows();
+
+            for(int i = selection.length - 1; i >= 0; i--){
+                modele.removeLivre(selection[i]);
+            }
+        }
+    }
 }
