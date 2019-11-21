@@ -12,8 +12,8 @@ public class ModeleDynamiqueLivre extends AbstractTableModel {
     public ModeleDynamiqueLivre() {
         super();
 
-        livres.add(new Livre("Johnathan", "Sykes", "tonton", 3, 4, 2034));
-        livres.add(new Livre("Nicolas", "Van de Kampf", "tata", 3, 4, 2019));
+        livres.add(new Livre("Harry potter", "Rowling", "blablabla", 3, 4, 2034));
+        livres.add(new Livre("le petit Nicolas", "Sarkozy", "blablabla", 3, 4, 2019));
 
     }
 
